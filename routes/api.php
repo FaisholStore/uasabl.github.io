@@ -26,6 +26,9 @@ return response()->json([
 
 ],404);
 })->name('login');
-Route::get('siswa', [SiswaController::class,'index'])->middleware('auth:sanctum');
+
+Route::get('siswa', [SiswaController::class,'index'])->middleware('auth:sanctum','ablity:admin1');
+
+Route::post('siswa', [SiswaController::class,'store'])->middleware('auth:sanctum', 'ablity:superadmin');
 Route::post('registerUser', [AuthController::class, 'registerUser']);
 Route::post('loginUser', [AuthController::class, 'loginUser']);
